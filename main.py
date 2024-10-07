@@ -19,5 +19,6 @@ with open(sys.argv[1]) as f:
 
 # Low
 # Password: secret
+# SecondPassword: secret
 
 print('Done!')
