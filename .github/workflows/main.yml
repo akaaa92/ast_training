@@ -33,7 +33,7 @@ jobs:
       uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.4
       with:
         project: ${{ github.repository }}
-        team: CxServer\SP\APAC
+        team: CxServer/SP/APAC
         checkmarx_url: https://cxprivatecloud.checkmarx.net/  # To be stored in GitHub Secrets.
         checkmarx_username: akash.singh@checkmarx.com  # To be stored in GitHub Secrets.
         checkmarx_password: Santa@11feb  # To be stored in GitHub Secrets.
@@ -42,4 +42,4 @@ jobs:
         incremental: false
         scanners: sast
         bug_tracker: GitHub
-        params: --namespace=${{ github.repository_owner }} --checkmarx.settings-override=true --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref_name }} --cx-flow.filterSeverity --cx-flow.filterCategory --checkmarx.version=9.6
+        params: --namespace=${{ github.repository_owner }} --checkmarx.settings-override=true --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref_name }} --cx-flow.filterSeverity --cx-flow.filterCategory
