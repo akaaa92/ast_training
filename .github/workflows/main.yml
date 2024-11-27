@@ -45,7 +45,7 @@ jobs:
           checkmarx_client_secret: 014DF517-39D1-4453-B7B3-9930C563627C            
           scanners: sast            
           preset: ASA Premium                     
-          params: --checkmarx.scan-timeout=240 --checkmarx.version=9.6 --checkmarx.incremental=false --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --cx-flow.filter-severity --cx-flow.filter-category --checkmarx.disable-clubbing=true --repo-url=${{ github.event.repository.url }} --scan-resubmit=true --checkmarx.scan-timeout=1 --checkmarx.cancelInprogressScan=true
+          params: --checkmarx.scan-timeout=240 --checkmarx.version=9.6 --checkmarx.incremental=false --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --cx-flow.filter-severity --cx-flow.filter-category --checkmarx.disable-clubbing=true --repo-url=${{ github.event.repository.url }} --scan-resubmit=true --checkmarx.cancelInprogressScan=true
       - name: Upload SARIF file          
         uses: github/codeql-action/upload-sarif@v2          
         with:            
