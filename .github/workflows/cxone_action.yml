@@ -1,0 +1,30 @@
+name: Checkmarx Scan
+
+on:
+  workflow_call:
+
+jobs:
+  run_checkmarx:
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+    runs-on: ubuntu-latest
+    steps:
+        # Checks out the GitHub repository to GITHUB_WORKSPACE so that subsequent steps could act on it
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Checkmarx One CLI Action
+        uses: checkmarx/ast-github-action@main #Github Action version
+        with:
+          project_name: ${{ github.repository }}
+          cx_tenant: ${{ secrets.CHECKMARX_TENANT }}
+          base_uri: ${{ secrets.CHECKMARX_BASEURI }}
+          cx_client_id:  ${{ secrets.CHECKMARX_CLIENTID }}
+          cx_client_secret: ${{ secrets.CHECKMARX_GITHUBACTIONS }}
+          additional_params: --scs-repo-url https://github.com/WebGoat/WebGoat.git --report-format sarif --output-path . --scan-types sast,iac-security,sca,api-security
+      - name: Upload Checkmarx SARIF File
+        uses: actions/upload-artifact@v4
+        with:
+          name: Checkmarx Report
+          file: cx_result.sarif
