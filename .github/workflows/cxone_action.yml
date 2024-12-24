@@ -1,7 +1,10 @@
 name: Checkmarx Scan
 
 on:
-  workflow_call:
+  push:
+    branches:
+    - main
+    - master
 
 jobs:
   run_checkmarx:
